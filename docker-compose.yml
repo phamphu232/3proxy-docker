@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+  3proxy:
+    image: 3proxy/3proxy:0.9.4
+    container_name: 3proxy
+    volumes:
+      - ./volumes/3proxy:/etc/3proxy
+      - ./volumes/3proxy/conf/add3proxyuser.sh:/add3proxyuser.sh
+      - ./volumes/bin/mycrypt:/bin/mycrypt
+    ports:
+      - "8081:8080/tcp"
+      - "3129:3128/tcp"
+      - "1081:1080/tcp"
+    restart: unless-stopped
